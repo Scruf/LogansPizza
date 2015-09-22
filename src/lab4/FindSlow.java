@@ -13,7 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
+
 public class FindSlow {
   ArrayList<Integer> list;
     public FindSlow(){
@@ -65,7 +65,7 @@ public class FindSlow {
          for(int x=0;x<list.size();x++)
          {
             
-             if(x!=list.size()/2+1)
+             if(x!=list.size()/2+1 && x!=list.size()/2 && x!=list.size()/2+2 )
 
              {
                  int diff =0; 

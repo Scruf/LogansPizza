@@ -16,8 +16,11 @@ public class Lab4 {
      */
     public static void main(String[] args) {
       FindSlow find = new FindSlow();
-      find.populate("DataSet.txt");
-      find.findSlow();
+      /*find.populate("DataSet.txt");
+      find.findSlow();*/
+      FastSelect  fast = new FastSelect();
+      fast.populate("DataSet.txt");
+      fast.finFastest(140);
     }
     
 }
