@@ -9,14 +9,11 @@ package lab4;
  *
  * @author ekozi
  */
-public class Lab4 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-      FindSlow find = new FindSlow();
-      
+public class Test {
+    public static void main(String []args)
+    {
+        FindSlow slow = new FindSlow();
+        slow.populate("DataSet.txt");
+        slow.findSlow();
     }
-    
 }

@@ -14,9 +14,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FastSelect {
+public class FindFast {
 	ArrayList < Integer > list;
-	public FastSelect() {
+	public FindFast() {
 		list = new ArrayList < Integer > ();
 	}
 	public void populate(String name) {
@@ -33,12 +33,20 @@ public class FastSelect {
 		}
 
 	}
-	private int fastSelect(ArrayList < Integer > list, int number) {
+        private int findKth()
+        {
+            ArrayList<Integer> smal = new ArrayList(list);
+            Collections.sort(smal);
+           
+            return smal.get(0);
+        }
+	private int fastSelect(ArrayList < Integer > list) {
+                int number = findKth();
 		ArrayList < Integer > smallestList = new ArrayList < Integer > ();
 		ArrayList < Integer > largestList = new ArrayList < Integer > ();
 
 
-
+                
 		while (!list.isEmpty()) {
 
 			int pivot = list.get(list.size() / 2);
@@ -80,7 +88,13 @@ public class FastSelect {
 		return 0;
 
 	}
-	public void finFastest(int number) {
-		System.out.print(fastSelect(list, number));
+	public void finFastest() {
+		System.out.print(fastSelect(list));
 	}
+        public static void main(String []args)
+        {
+            FindFast fast = new FindFast();
+            fast.populate("DataSet.txt");
+            fast.finFastest();
+        }
 }
