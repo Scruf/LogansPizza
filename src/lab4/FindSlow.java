@@ -21,6 +21,7 @@ public class FindSlow {
     }
     public void populate(String name) 
     {
+       
         try{
         String dummy= " ";
         BufferedReader reader = new BufferedReader(new FileReader(name));
@@ -34,7 +35,6 @@ public class FindSlow {
          System.out.print("File was not found");
      }
     
-      
     }
     public void findSlow()
     {
@@ -55,16 +55,55 @@ public class FindSlow {
 
      }
       Collections.reverse(list);
-   
+      int median = 0;
+      int sum = 0;
      if(list.size()%2==0)
      {
         
-         System.out.print(list.get(list.size()/2));
+         median = list.get(list.size()/2);
+        
+         for(int x=0;x<list.size();x++)
+         {
+            
+             if(x!=list.size()/2+1)
+
+             {
+                 int diff =0; 
+                 if(median>list.get(x))
+                     diff=median-list.get(x);
+                 else
+                     diff=list.get(x)-median;
+                  
+                 sum+=diff;
+             }
+         }
+             
      }
      else
              {
-                  
-                   System.out.print(list.get(list.size()/2+1));
-                     }
+                   
+                 median = list.get(list.size()/2+1);
+               for(int x=0;x<list.size();x++)
+                   
+         {
+           
+             if(x!=list.size()/2 &&  x!=list.size()/2+1 && x!=list.size()/2-1)
+                {
+                 int diff =0; 
+                 if(median>list.get(x))
+                     diff=median-list.get(x);
+                 else
+                     diff=list.get(x)-median;
+              
+                 sum+=diff;
+             }
+         
+            
+               
+         }
+              }
+              System.out.print("Optimal store location: "+median+"\n");
+              System.out.print("Sum of distances: "+sum+"\n");
+              System.out.print("Elapsed time: "+System.currentTimeMillis()+"\n");
     }
 }
