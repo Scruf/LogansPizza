@@ -33,6 +33,8 @@ public class FindSlow {
      {
          System.out.print("File was not found");
      }
+    
+      
     }
     public void findSlow()
     {
@@ -52,7 +54,17 @@ public class FindSlow {
            list.set(i+1, key);
 
      }
-     Collections.reverse(list);
-     System.out.print(list);
+      Collections.reverse(list);
+   
+     if(list.size()%2==0)
+     {
+        
+         System.out.print(list.get(list.size()/2));
+     }
+     else
+             {
+                  
+                   System.out.print(list.get(list.size()/2+1));
+                     }
     }
 }
