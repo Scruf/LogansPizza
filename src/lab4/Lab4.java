@@ -17,7 +17,7 @@ public class Lab4 {
     public static void main(String[] args) {
       FindSlow find = new FindSlow();
       find.populate("DataSet.txt");
-      find.print();
+      find.findSlow();
     }
     
 }

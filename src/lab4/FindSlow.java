@@ -11,12 +11,13 @@ package lab4;
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 public class FindSlow {
-  HashMap<String,Integer> map;
+  ArrayList<Integer> list;
     public FindSlow(){
-        map = new HashMap<String,Integer>();
+        list = new ArrayList<Integer>();
     }
     public void populate(String name) 
     {
@@ -25,7 +26,7 @@ public class FindSlow {
         BufferedReader reader = new BufferedReader(new FileReader(name));
         while((dummy=reader.readLine())!=null)
         {
-           map.put(dummy.split(" ")[0], Integer.parseInt(dummy.split(" ")[1]));
+           list.add(Integer.parseInt(dummy.split(" ")[1]));
         }
         reader.close();
      }catch(Exception ex)
@@ -33,13 +34,25 @@ public class FindSlow {
          System.out.print("File was not found");
      }
     }
-    public void print(){
-      
-        for(Map.Entry<String, Integer> entry : map.entrySet()){
-            String key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.print(key+" - "+value);
-            System.out.println();
-        }
+    public void findSlow()
+    {
+       
+      int j;                    
+     int key;              
+     int i;  
+
+     for (j = 1; j < list.size(); j++)   
+    {
+           key = list.get(j);
+           for(i = j - 1; (i >= 0) && (list.get(i)< key); i--)   
+          {
+              list.set(i+1, list.get(i));
+                
+          }
+           list.set(i+1, key);
+
+     }
+     Collections.reverse(list);
+     System.out.print(list);
     }
 }
