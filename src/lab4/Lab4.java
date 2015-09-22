@@ -20,7 +20,7 @@ public class Lab4 {
       find.findSlow();*/
       FastSelect  fast = new FastSelect();
       fast.populate("DataSet.txt");
-      fast.finFastest(140);
+      fast.finFastest(400);
     }
     
 }
