@@ -33,68 +33,76 @@ public class FindFast {
 		}
 
 	}
-        private int findKth()
-        {
-            ArrayList<Integer> smal = new ArrayList(list);
-            Collections.sort(smal);
+     
+       private double find_median(ArrayList<Integer> list)
+       {
+           int k =(int)Math.floor( list.size()/2);
+       
+           double med1 = fastSelect(list,k);
+           double med2 = fastSelect(list,k-1);
+         
+         
            
-            return smal.get(0);
-        }
-	private int fastSelect(ArrayList < Integer > list) {
-                int number = findKth();
-		ArrayList < Integer > smallestList = new ArrayList < Integer > ();
-		ArrayList < Integer > largestList = new ArrayList < Integer > ();
-
-
-                
-		while (!list.isEmpty()) {
-
-			int pivot = list.get(list.size() / 2);
+           double actual_mid = 0;
+           if(list.size()%2==0)
+           {
+              
+               actual_mid = (int)Math.floor(med1+med2)/2;
+           }
+           else
+               actual_mid = fastSelect(list,k-1);
+           return actual_mid;
+               
+       }
+	public static int fastSelect(ArrayList<Integer> list, int k)
+	{
+	
+		while(!list.isEmpty()){
+			
 			int count = 0;
-			for (Integer l: list) {
-				if (pivot == l) count++;
-				if (l < pivot) smallestList.add(l);
-				else largestList.add(l);
-
-			}
-
-			if (number >= smallestList.size() && number < smallestList.size() + count) {
-
-				return pivot;
-			} else if (smallestList.size() > number) {
-
-
-				list.clear();
-
-				for (Integer l: smallestList) {
-					list.add(l);
-
-				}
-
-				smallestList.clear();
-
-			} else {
-
-				number = number - smallestList.size() - count;
-				list.clear();
-
-				for (Integer i: largestList)
-				list.add(i);
-				largestList.clear();
-
-			}
-
+			int pivot = list.get(list.size()/2); 
+			ArrayList<Integer> smallestList = new ArrayList<Integer>();
+        	ArrayList<Integer> largestList = new ArrayList<Integer>();
+			
+        	for(Integer l : list){
+                    if(l<pivot)
+                        smallestList.add(l);
+                    else if(l>pivot)
+                        largestList.add(l);
+                    else
+                        count++;
+                }
+        	
+        	
+        	
+        	int m = smallestList.size();
+        	
+        	if(k >= m && k < m + count){
+        		return pivot;
+        	}
+        	
+        	if(m > k){
+        		list = smallestList;
+        	}
+        	else{
+        		k = (k - m -count);
+        		list = largestList;
+        	}
 		}
 		return 0;
-
-	}
-	public void finFastest() {
-		System.out.print(fastSelect(list));
-	}
+        }
+	public void findFastest()
+        {
+            double var = find_median(list);
+            System.out.println();
+            System.out.print(var);
+            
+        }
         public static void main(String []args)
         {
             FindFast fast = new FindFast();
             fast.populate("DataSet.txt");
-            fast.finFastest();
+            fast.findFastest();
+            
         }
 }

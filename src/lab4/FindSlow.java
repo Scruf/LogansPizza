@@ -64,11 +64,14 @@ public class FindSlow {
      {
        
          int  leftMid =(list.size()/2)-1 ;
+         
          int righMid =list.size()/2;
+         
          double  temp = (leftMid+righMid)/2;
         
          median = list.get((int) Math.floor(temp));
          int val = (median+list.get((int) Math.floor(temp)+1))/2;
+         System.out.print(" "+val+" "+list.get((int) Math.floor(temp)+1));
          median = val;
          for (Integer l : list)
              sum+=Math.abs(median-l);
@@ -106,7 +109,7 @@ public class FindSlow {
     public static void main(String []args)
     {
         FindSlow slow = new FindSlow();
-        slow.populate(args[0]);
+        slow.populate("DataSet.txt");
         slow.findSlow();
     }
 }
