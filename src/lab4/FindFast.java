@@ -15,10 +15,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FindFast {
+    public long begining = System.currentTimeMillis();
+    public long endTime = 0;
+   
 	ArrayList < Integer > list;
 	public FindFast() {
 		list = new ArrayList < Integer > ();
 	}
+        
 	public void populate(String name) {
 
 		try {
@@ -51,8 +55,16 @@ public class FindFast {
            }
            else
                actual_mid = fastSelect(list,k-1);
+           endTime = System.currentTimeMillis();
            return actual_mid;
                
+       }
+       public int getSum()
+       {
+           int sum=0;
+           for(Integer i : list)
+               sum+=Math.abs(find_median(list)-i);
+           return sum;
        }
 	public static int fastSelect(ArrayList<Integer> list, int k)
 	{
@@ -94,8 +106,7 @@ public class FindFast {
 	public void findFastest()
         {
             double var = find_median(list);
-            System.out.println();
-            System.out.print(var);
+            System.out.print("Optimal store location: "+(int)var);
             
         }
         public static void main(String []args)
@@ -103,6 +114,11 @@ public class FindFast {
             FindFast fast = new FindFast();
             fast.populate("DataSet.txt");
             fast.findFastest();
+            System.out.println();
+            System.out.print("Sum of distances "+fast.getSum());
+            System.out.println();
+            long time = fast.endTime - fast.begining;
+            System.out.print("Time elapsed "+time);
             
         }
 }
