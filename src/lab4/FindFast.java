@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FindFast {
-    public long begining = System.currentTimeMillis();
+    public long begining ;
     public long endTime = 0;
    
 	ArrayList < Integer > list;
@@ -41,7 +41,7 @@ public class FindFast {
        private double find_median(ArrayList<Integer> list)
        {
            int k =(int)Math.floor( list.size()/2);
-       
+           begining = System.currentTimeMillis();
            double med1 = fastSelect(list,k);
            double med2 = fastSelect(list,k-1);
          
@@ -56,6 +56,7 @@ public class FindFast {
            else
                actual_mid = fastSelect(list,k-1);
            endTime = System.currentTimeMillis();
+          
            return actual_mid;
                
        }
